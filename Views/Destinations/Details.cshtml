@@ -1,0 +1,45 @@
+@model TravelSocialApp.Models.Destination
+
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="img-fluid rounded-3 shadow-lg w-100" alt="@Model.Name">
+            }
+            else 
+            {
+                 <div class="bg-light rounded-3 d-flex align-items-center justify-content-center" style="height: 400px;">
+                    <span class="text-muted">No Image Available</span>
+                </div>
+            }
+        </div>
+        <div class="col-lg-6">
+            <div class="ps-lg-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-action="Index">Destinations</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+                    </ol>
+                </nav>
+                
+                <h1 class="display-4 fw-bold mb-3">@Model.Name</h1>
+                <h3 class="text-primary mb-4">$@Model.Price <span class="text-muted fs-5 fw-normal">/ person</span></h3>
+                
+                <p class="lead text-muted mb-5">@Model.Description</p>
+                
+                <div class="card bg-light border-0 p-4">
+                    <h4 class="mb-3">Ready to go?</h4>
+                    <p class="mb-4">Book your trip now and secure your spot for this amazing experience.</p>
+                    <a asp-controller="Bookings" asp-action="Create" asp-route-destinationId="@Model.Id" class="btn btn-primary btn-lg w-100">
+                        Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

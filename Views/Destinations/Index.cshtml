@@ -1,0 +1,53 @@
+@model IEnumerable<TravelSocialApp.Models.Destination>
+
+@{
+    ViewData["Title"] = "Destinations";
+}
+
+<div class="row mb-5 align-items-center">
+    <div class="col">
+        <h1 class="display-4">Explore Destinations</h1>
+        <p class="lead text-muted">Find your next perfect getaway.</p>
+    </div>
+    <div class="col-auto">
+        <!-- Hidden from normal navigation but accessible -->
+        <a asp-action="Create" class="btn btn-outline-secondary">Add Destination (Admin)</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm hover-elevate">
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <img src="@item.ImageUrl" class="card-img-top" alt="@item.Name" style="height: 240px; object-fit: cover;">
+                }
+                else
+                {
+                     <div class="bg-light d-flex align-items-center justify-content-center" style="height: 240px;">
+                        <span class="text-muted">No Image</span>
+                    </div>
+                }
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="card-title mb-0">@item.Name</h5>
+                        <span class="badge bg-primary rounded-pill">$@item.Price</span>
+                    </div>
+                    <p class="card-text text-muted text-truncate-2">@item.Description</p>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary w-100 mt-3">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .text-truncate-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
