@@ -1,0 +1,328 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.booking-modal {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    width: 600px;
+    max-width: 95vw;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.modal-header {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dest-mini-info {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.dest-mini-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.dest-mini-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.dest-mini-info p {
+    margin: 0;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.step-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.step-dot.active {
+    background: var(--primary);
+    color: white;
+}
+
+.step-line {
+    width: 20px;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.modal-content {
+    padding: 2rem;
+}
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.75rem;
+}
+
+.calendar-nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.weekday {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.calendar-day:hover:not(.past):not(.empty) {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.calendar-day.selected {
+    background: var(--primary);
+    color: white;
+}
+
+.calendar-day.past {
+    color: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+}
+
+.next-btn,
+.confirm-btn,
+.done-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Step 2 */
+.payment-summary {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-muted);
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 1.25rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 1rem;
+}
+
+.payment-method {
+    flex: 1;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.payment-method.active {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-form input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: white;
+    font-family: inherit;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #10b981;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.back-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    flex: 2;
+    margin-top: 0;
+}
+
+/* Success Step */
+.success-step {
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.qr-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    margin: 1rem 0;
+    color: black;
+}
+
+.mock-qr {
+    width: 150px;
+    height: 150px;
+    background: #f1f5f9;
+    border: 2px solid #e2e8f0;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.mock-qr span {
+    font-weight: 800;
+    font-family: monospace;
+    font-size: 1.25rem;
+}
+
+.qr-hint {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+}

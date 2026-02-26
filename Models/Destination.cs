@@ -13,7 +13,6 @@ namespace TravelSocialApp.Models
         [Required]
         public string Description { get; set; } = default!;
 
-        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
         public string? ImageUrl { get; set; }
